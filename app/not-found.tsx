@@ -1,12 +1,11 @@
 "use client";
 import React from "react";
-import Section from "@/components/global/Section";
-import SectionTitle from "@/components/global/SectionTitle";
 const NotFound = () => {
   return (
-    <Section>
-      <SectionTitle text="404 Not found"></SectionTitle>
-    </Section>
+    <div style={{ textAlign: "center", padding: "100px" }}>
+      <h1>404</h1>
+      <p>Page Not Found</p>
+    </div>
   );
 };
 
