@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Section from "@/components/global/Section";
 import SectionTitle from "@/components/global/SectionTitle";
