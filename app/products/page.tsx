@@ -10,11 +10,9 @@ const page = async ({
   const { search, layout } = await searchParams;
 
   return (
-    <>
-      <Suspense fallback={<LoadingContainer />}>
-        <ProductsContainer search={search || ""} layout={layout || "grid"} />
-      </Suspense>
-    </>
+    <Suspense fallback={<LoadingContainer />}>
+      <ProductsContainer search={search || ""} layout={layout || "grid"} />
+    </Suspense>
   );
 };
 
