@@ -1,5 +1,3 @@
-"use client";
-import React from "react";
 const NotFound = () => {
   return (
     <div style={{ textAlign: "center", padding: "100px" }}>
