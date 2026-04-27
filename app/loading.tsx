@@ -1,4 +1,4 @@
-"use client";
+"use "
 const loading = () => {
   return <div>loading</div>;
 };

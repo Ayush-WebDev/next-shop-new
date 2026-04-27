@@ -11,16 +11,20 @@ import { AlignLeft } from "lucide-react";
 import { Button } from "../ui/button";
 import { links } from "@/utils/links";
 import Link from "next/link";
+import SignoutLink from "./SignoutLink";
+import { SignUpButton, SignInButton, Show } from "@clerk/nextjs";
+import UserIcon from "./UserIcon";
 
 const Links = () => {
   return (
     <div className="z-10">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant={"outline"} size={"icon"}>
+          <Button variant={"outline"} size={"icon"} className="w-auto px-2">
             <AlignLeft
               className={"h-[1.2rem] w-[1.2rem] scale-100 transition-all"}
             />
+            <UserIcon />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent
@@ -28,25 +32,38 @@ const Links = () => {
           sideOffset={4}
           className="w-40 px-4 ark:bg-accent py-4 flex flex-col justify-items-stretch border  gap-2 bg-white dark:bg-accent shadow-md rounded-lg"
         >
-          {links?.map((link, index) => {
-            const { href, text } = link;
-            return (
-              <DropdownMenuItem
-                key={index}
-                className="capitalize text-foreground hover:border-0 cursor-pointer hover:outline-0"
-              >
-                <Link className="" href={href}>
-                  {text}
-                </Link>
-              </DropdownMenuItem>
-            );
-          })}
-          <DropdownMenuGroup>
+          <Show when={"signed-out"}>
+            <DropdownMenuItem className="capitalize hover:border-0 cursor-pointer hover:outline-0">
+              <SignUpButton mode={"modal"}>
+                <button className="cursor-pointer">Register</button>
+              </SignUpButton>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem className="capitalize hover:border-0 cursor-pointer hover:outline-0">
+              <SignInButton mode={"modal"}>
+                <button className="cursor-pointer">Login</button>
+              </SignInButton>
+            </DropdownMenuItem>
+          </Show>
+          <Show when={"signed-in"}>
+            {links?.map((link, index) => {
+              const { href, text } = link;
+              return (
+                <DropdownMenuItem
+                  key={index}
+                  className="capitalize text-foreground hover:border-0 cursor-pointer hover:outline-0"
+                >
+                  <Link className="" href={href}>
+                    {text}
+                  </Link>
+                </DropdownMenuItem>
+              );
+            })}
             <DropdownMenuSeparator className="w-full h-px bg-gray-200" />
             <DropdownMenuItem className="capitalize hover:border-0 cursor-pointer hover:outline-0">
-              <Link href={"/logout"}>{"Logout"}</Link>
+              <SignoutLink />
             </DropdownMenuItem>
-          </DropdownMenuGroup>
+          </Show>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

@@ -1,5 +1,6 @@
 import { ShoppingCart } from "lucide-react";
 import { Button } from "../ui/button";
+import { toast } from "sonner";
 import Link from "next/link";
 
 const CartButton = () => {

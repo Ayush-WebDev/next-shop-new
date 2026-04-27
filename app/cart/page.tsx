@@ -1,7 +1,18 @@
-import React from "react";
+"use client";
+import { toast } from "sonner";
 
 const page = () => {
-  return <div>Cart page</div>;
+  return (
+    <div>
+      <button
+        onClick={() => {
+          toast("clicked");
+        }}
+      >
+        click me
+      </button>
+    </div>
+  );
 };
 
 export default page;
