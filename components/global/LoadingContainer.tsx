@@ -4,7 +4,7 @@ import { Card, CardContent } from "../ui/card";
 
 const LoadingContainer = () => {
   return (
-    <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-16">
       <LoadingProduct />
       <LoadingProduct />
       <LoadingProduct />
